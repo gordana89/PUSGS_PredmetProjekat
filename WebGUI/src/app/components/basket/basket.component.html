@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Components</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of productsList; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ product.name }}
+            </td>
+            <td>{{ product.price | number }}</td>
+            <td>{{ product.components }}</td>
+            <td>
+              <button type="info" (click)="addProductToBasket(product)">
+                Add
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-7 helper-class">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Components</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of productsInBasket; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ product.name }}
+            </td>
+            <td>{{ product.price | number }}</td>
+            <td>{{ product.components }}</td>
+            <td>
+              <button (click)="removeProductFromBasket(product)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align: center">Additional 300💲 for delivery fee</div>
+      <div style="text-align: center">total:{{ total }} 💰</div>
+      <div class="inputDiv">
+        <input
+          id="addressForDelivery"
+          type="text"
+          placeholder="Enter addres for delivery"
+          required
+        />
+      </div>
+      <div class="inputDiv">
+        <input id="comment" type="text" placeholder="Enter Comment" />
+      </div>
+      <button
+        style="margin: 0 auto; display: block"
+        class="btn btn-info"
+        [disabled]="productsInBasket.length == 0"
+        (click)="checkout()"
+      >
+        Checkout
+      </button>
+    </div>
+  </div>
+</div>

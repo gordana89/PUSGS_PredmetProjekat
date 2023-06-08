@@ -1,0 +1,56 @@
+<table class="table table-striped center" [ngStyle]="{ width: '35%' }">
+  <caption>
+    User Information
+  </caption>
+  <!-- <tr>
+    <th>Username:</th>
+    <td><input type="text" value="{{ userEditInfo.username }}" disabled /></td>
+  </tr> -->
+  <!-- <tr>
+    <th>E-mail:</th>
+    <td><input type="text" value="{{ userEditInfo.email }}" disabled /></td>
+  </tr> -->
+  <tr>
+    <th>Firstname</th>
+    <td>
+      {{ userEditInfo.firstName }}
+    </td>
+  </tr>
+  <tr>
+    <th>Lastname</th>
+    <td>
+      {{ userEditInfo.lastName }}
+    </td>
+  </tr>
+  <tr>
+    <th>Birthday</th>
+    <td>
+      {{ userEditInfo.dateOfBirth }}
+    </td>
+  </tr>
+  <!-- <tr>
+    <th>Role</th>
+    <td>{{ userEditInfo.userType }}</td>
+  </tr> -->
+  <tr>
+    <th>Address</th>
+    <td>
+      {{ userEditInfo.address }}
+    </td>
+  </tr>
+  <tr>
+    <th>File</th>
+    <td #myButton class="image-style">
+      <img [src]="userEditInfo.file" />
+    </td>
+  </tr>
+  <tfoot>
+    <tr>
+      <td colspan="2">
+        <button class="btn btn-primary" (click)="editButtonClick(userEditInfo)">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </tfoot>
+</table>

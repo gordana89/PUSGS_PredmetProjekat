@@ -1,0 +1,21 @@
+<h1>Available in store</h1>
+<table class="table table-striped center" [ngStyle]="{ width: '55%' }">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Components</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productsList; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ product.name }}
+      </td>
+      <td>{{ product.price | number }}</td>
+      <td>{{ product.components }}</td>
+    </tr>
+  </tbody>
+</table>

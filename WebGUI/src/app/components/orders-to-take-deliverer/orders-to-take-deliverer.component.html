@@ -1,0 +1,44 @@
+<h1>Orders to take</h1>
+
+<table class="table table-striped center" [ngStyle]="{ width: '55%' }">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Address</th>
+      <th scope="col">Price</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Status</th>
+      <th scope="col">Time</th>
+      <th scope="col">Deliverer</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of listOfOrders; index as i">
+      <ng-container *ngIf="order.status == 'Waiting'">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          {{ order.address }}
+        </td>
+        <td>{{ order.price | number }}</td>
+        <td>
+          {{
+            order.comment == "" || order.comment == null
+              ? "No comment"
+              : order.comment
+          }}
+        </td>
+        <td>{{ order.status }}</td>
+        <td>
+          {{ order.time == null ? "not yet picked up" : order.time }}
+        </td>
+        <td>
+          {{ order.delivererId == null ? "No deliverer" : order.delivererId }}
+        </td>
+        <td>
+          <button (click)="takeOrder(order.id, order)">Take</button>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

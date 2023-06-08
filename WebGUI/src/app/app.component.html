@@ -1,0 +1,140 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button profile settings icon"
+    routerLink="store"
+  >
+    <mat-icon>store</mat-icon>
+    Store
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button profile settings icon"
+    [ngStyle]="{ marginLeft: '30px' }"
+    routerLink="profile"
+    *ngIf="(user | json) != '{}'"
+  >
+    <mat-icon>settings</mat-icon>
+    Profile
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button order to take icon"
+    [ngStyle]="{ marginLeft: '50px' }"
+    routerLink="ordersToTakeDeliverer"
+    *ngIf="(user | json) != '{}' && user.role == 'Deliverer'"
+  >
+    <mat-icon>checklist_rtl</mat-icon>
+    Take Order
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button order history icon"
+    [ngStyle]="{ marginLeft: '60px' }"
+    routerLink="ordersHistoryDeliverer"
+    *ngIf="(user | json) != '{}' && user.role == 'Deliverer'"
+  >
+    <mat-icon>receipt_long</mat-icon>
+    History
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button delivered icon"
+    [ngStyle]="{ marginLeft: '60px' }"
+    routerLink="delivererDeliver"
+    *ngIf="(user | json) != '{}' && user.role == 'Deliverer'"
+  >
+    <mat-icon>done</mat-icon>
+    Mark as delivered
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button orders icon"
+    [ngStyle]="{ marginLeft: '40px' }"
+    routerLink="ordersAdmin"
+    *ngIf="(user | json) != '{}' && user.role == 'Administrator'"
+  >
+    <mat-icon>list</mat-icon>
+    Orders
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button verify icon"
+    [ngStyle]="{ marginLeft: '40px' }"
+    routerLink="verifyDelivererAdmin"
+    *ngIf="(user | json) != '{}' && user.role == 'Administrator'"
+  >
+    <mat-icon>verified_user</mat-icon>
+    Verify User
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button basket icon"
+    [ngStyle]="{ marginLeft: '70px' }"
+    routerLink="basket"
+    *ngIf="(user | json) != '{}' && user.role == 'Customer'"
+  >
+    <mat-icon>shopping_bag</mat-icon>
+    Basket
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button basket icon"
+    [ngStyle]="{ marginLeft: '70px' }"
+    routerLink="orderHistoryClient"
+    *ngIf="(user | json) != '{}' && user.role == 'Customer'"
+  >
+    <mat-icon>receipt_long</mat-icon>
+    History
+  </button>
+  <button
+    [ngStyle]="{ marginLeft: '70px' }"
+    mat-raised-button
+    (click)="openDialog()"
+    *ngIf="(user | json) != '{}' && user.role == 'Administrator'"
+  >
+    <mat-icon>add</mat-icon>
+    Add Product
+  </button>
+
+  <span class="example-spacer"></span>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button register icon"
+    routerLink="register"
+    *ngIf="(user | json) == '{}'"
+  >
+    <mat-icon>group_add</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button logout icon"
+    *ngIf="(user | json) != '{}'"
+    (click)="logoutUser()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button login icon"
+    routerLink="login"
+    *ngIf="(user | json) == '{}'"
+  >
+    <mat-icon>login</mat-icon>
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

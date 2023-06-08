@@ -1,0 +1,40 @@
+<h1>Users to approve</h1>
+
+<table class="table table-striped center" [ngStyle]="{ width: '55%' }">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">username</th>
+      <th scope="col">Address</th>
+      <th scope="col">dateOfBirth</th>
+      <th scope="col">email</th>
+      <th scope="col">firstName</th>
+      <th scope="col">lastName</th>
+      <th scope="col">userType</th>
+      <th scope="col">status</th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let deliverer of deliveersForApproval; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ deliverer.address }}
+      </td>
+      <td>{{ deliverer.username }}</td>
+      <td>{{ deliverer.dateOfBirth }}</td>
+      <td>{{ deliverer.email }}</td>
+      <td>{{ deliverer.firstName }}</td>
+      <td>{{ deliverer.lastName }}</td>
+      <td>{{ deliverer.userType }}</td>
+      <td>{{ deliverer.status }}</td>
+      <td *ngIf="deliverer.status === 'Waiting'">
+        <button (click)="approveUser(deliverer.email)">approve</button>
+      </td>
+      <td *ngIf="deliverer.status === 'Waiting'">
+        <button (click)="rejectUser(deliverer.email)">Reject</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

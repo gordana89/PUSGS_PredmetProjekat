@@ -1,0 +1,188 @@
+<div class="center1">
+  <mat-card-content>
+    <form class="my-form">
+      <!--FORM FIELDS-->
+      <mat-card-content>
+        <form
+          class="my-form"
+          [formGroup]="registerForm"
+          (ngSubmit)="register()"
+        >
+          <mat-form-field class="full-width">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              placeholder="Username"
+              name="username"
+              formControlName="username"
+            />
+          </mat-form-field>
+          <div *ngIf="f.username.errors" class="danger">
+            <div *ngIf="f.username.errors?.required">Username is required</div>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              placeholder="First name"
+              name="firstName"
+              formControlName="firstName"
+            />
+          </mat-form-field>
+          <div *ngIf="f.firstName.errors" class="danger">
+            <div *ngIf="f.firstName.errors?.required">
+              First name is required
+            </div>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              placeholder="Last Name"
+              name="lastName"
+              formControlName="lastName"
+            />
+          </mat-form-field>
+          <div *ngIf="f.lastName.errors" class="danger">
+            <div *ngIf="f.lastName.errors?.required">Last name is required</div>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              placeholder="Address"
+              name="address"
+              formControlName="address"
+            />
+          </mat-form-field>
+          <div *ngIf="f.address.errors" class="danger">
+            <div *ngIf="f.address.errors?.required">Address is required</div>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Email"
+              name="email"
+              formControlName="email"
+            />
+          </mat-form-field>
+          <div *ngIf="f.email.errors" class="danger">
+            <div *ngIf="f.email.errors?.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              name="password"
+              type="password"
+              formControlName="password"
+            />
+          </mat-form-field>
+          <div *ngIf="f.password.errors" class="danger">
+            <div *ngIf="f.password.errors?.required">Password is required</div>
+            <div *ngIf="f.password.errors?.minlength">
+              Password must be at least 3 characters
+            </div>
+          </div>
+          <mat-form-field class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              matInput
+              placeholder="Password"
+              name="confirmPassword"
+              formControlName="confirmPassword"
+              type="password"
+            />
+          </mat-form-field>
+
+          <div *ngIf="f.confirmPassword.errors" class="danger">
+            <div *ngIf="f.confirmPassword.errors?.minlength">
+              Password must be at least 3 characters
+            </div>
+            <div *ngIf="f.confirmPassword.errors?.required">
+              Confirm password is required
+            </div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">
+              Passwords must match
+            </div>
+          </div>
+          <section class="example-section">
+            <mat-label class="example-margin">User role:</mat-label>
+            <br />
+            <br />
+            <mat-radio-group formControlName="userType" name="userType">
+              <mat-radio-button class="example-margin" value="Administrator"
+                >Administrator</mat-radio-button
+              >
+              <mat-radio-button
+                class="example-margin"
+                value="Customer"
+                [ngStyle]="{ marginLeft: '10px' }"
+                >Customer</mat-radio-button
+              >
+              <mat-radio-button
+                class="example-margin"
+                value="Deliverer"
+                [ngStyle]="{ marginLeft: '10px' }"
+                >Deliverer</mat-radio-button
+              >
+            </mat-radio-group>
+            <div *ngIf="f.userType.errors" class="danger">
+              <div *ngIf="f.userType.errors?.required">
+                User Type is required
+              </div>
+            </div>
+          </section>
+          <mat-form-field>
+            <mat-label>Date of Birth</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              placeholder="Choose a date"
+              formControlName="dateOfBirth"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <div *ngIf="f.dateOfBirth.errors" class="danger">
+            <div *ngIf="f.dateOfBirth.errors?.required">
+              Birthdate is required
+            </div>
+          </div>
+
+          <div>
+            <label for="profile" class="form-label">Profile Image</label>
+            <input
+              type="file"
+              class="form-control"
+              id="file"
+              #fileInput
+              encType="multipart/form-data"
+              (change)="onFileChanged($event)"
+              formControlName="file"
+            />
+          </div>
+        </form>
+      </mat-card-content>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      (click)="register()"
+      color="primary"
+      [disabled]="!registerForm.valid"
+    >
+      REGISTER
+    </button>
+  </mat-card-actions>
+</div>

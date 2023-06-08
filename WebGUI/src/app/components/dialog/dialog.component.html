@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>Add Product Form</h1>
+<div mat-dialog-content>
+  <form class="my-form" [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+    <mat-form-field class="full-width">
+      <mat-label>name</mat-label>
+      <input
+        matInput
+        placeholder="name"
+        name="name"
+        type="text"
+        formControlName="Name"
+      />
+    </mat-form-field>
+    <div *ngIf="f.Name.errors" class="danger">
+      <div *ngIf="f.Name.errors.required">Name is required</div>
+    </div>
+    <mat-form-field class="full-width">
+      <mat-label>price</mat-label>
+      <input
+        id="Price"
+        matInput
+        placeholder="price"
+        name="price"
+        type="number"
+        formControlName="Price"
+      />
+    </mat-form-field>
+    <div *ngIf="f.Price.errors" class="danger">
+      <div *ngIf="f.Price.errors?.required">Price is required</div>
+    </div>
+    <mat-form-field class="full-width">
+      <mat-label>components</mat-label>
+      <input
+        matInput
+        placeholder="components"
+        name="components"
+        type="text"
+        formControlName="Components"
+      />
+    </mat-form-field>
+    <div *ngIf="f.Components.errors" class="danger">
+      <div *ngIf="f.Components.errors?.required">Components is required</div>
+    </div>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!addProductForm.valid"
+      >
+        Add
+      </button>
+    </mat-card-actions>
+  </form>
+
+  <!-- <mat-form-field appearance="outline">
+    <mat-label>Product name</mat-label>
+    <input matInput placeholder="Product name" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Product price</mat-label>
+    <input matInput type="number" placeholder="price" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Product compponents</mat-label>
+    <input matInput placeholder="Product compponents" />
+  </mat-form-field> -->
+</div>

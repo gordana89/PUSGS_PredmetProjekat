@@ -1,0 +1,55 @@
+<div class="center" [ngStyle]="{ width: '30%' }">
+  <mat-toolbar>
+    <span>LOGIN</span>
+  </mat-toolbar>
+  <mat-card class="my-card">
+    <mat-card-content>
+      <form class="my-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            name="email"
+            type="email"
+            id="email"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <div *ngIf="f.email.errors" class="danger">
+          <div *ngIf="f.email.errors.required">First Name is required</div>
+          <div *ngIf="f.email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Password"
+            name="password"
+            type="password"
+            formControlName="password"
+            if="password"
+          />
+        </mat-form-field>
+        <div *ngIf="f.password.errors" class="danger">
+          <div *ngIf="f.password.errors?.required">Password is required</div>
+          <div *ngIf="f.password.errors?.minlength">
+            Password must be at least 3 characters
+          </div>
+        </div>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            LOGIN
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
